@@ -10,8 +10,8 @@ public class Ticket {
     private String ticketOwnerName;
 
 
-    public Ticket(String ID, String eventName, double price) {
-        this.ID = UUID.randomUUID();
+    public Ticket(UUID ID, String eventName, double price) {
+        this.ID = ID;
         this.eventName = eventName;
         this.price = price;
         this.isAvailable = true;
@@ -19,5 +19,8 @@ public class Ticket {
     }
 
 
+    public void printDetails (){
+        System.out.println(this.ID + ", " + this.isAvailable);
+    }
 
 }
