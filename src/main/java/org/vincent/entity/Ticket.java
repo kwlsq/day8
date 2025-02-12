@@ -7,7 +7,7 @@ public class Ticket {
     private final String eventName;
     private double price;
     private boolean isAvailable;
-    private String ticketOwnerID;
+    private String ticketOwnerName;
 
 
     public Ticket(String ID, String eventName, double price) {
@@ -15,7 +15,7 @@ public class Ticket {
         this.eventName = eventName;
         this.price = price;
         this.isAvailable = true;
-        this.ticketOwnerID = null;
+        this.ticketOwnerName = "";
     }
 
 
