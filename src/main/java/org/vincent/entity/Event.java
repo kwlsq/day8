@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class Event {
-    private final UUID eventID;
+    private final int eventID;
     private String eventName;
     private HashMap<UUID, Ticket> ticketsMap;
 
-    public Event(String eventName, int ticketQuota, double price) {
-        this.eventID = UUID.randomUUID();
+    public Event(int eventID, String eventName, int ticketQuota, double price) {
+        this.eventID = eventID;
         this.eventName = eventName;
         this.ticketsMap = generateTickets(ticketQuota, eventName, price);
     }
@@ -33,8 +33,6 @@ public class Event {
 //    }
 
 
-
-
     public void printAvailableTickets (){
         int totalAvailableTickets = 0;
 
@@ -46,7 +44,7 @@ public class Event {
                 }
                 lastTicket = ticket;
             }
-            lastTicket.printDetails(totalAvailableTickets);
+            lastTicket.printDetails(totalAvailableTickets, this.eventID);
         }
 
 

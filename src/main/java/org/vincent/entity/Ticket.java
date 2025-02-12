@@ -22,8 +22,8 @@ public class Ticket {
         return this.isAvailable;
     }
 
-    public void printDetails (int totalAvailableTickets){
-        System.out.println(this.eventName + " has " + totalAvailableTickets + " available tickets");
+    public void printDetails (int totalAvailableTickets, int eventID){
+        System.out.println(eventID + ". " + this.eventName + " has " + totalAvailableTickets + " available tickets");
         System.out.println("Ticket price: " + this.price);
     }
 
