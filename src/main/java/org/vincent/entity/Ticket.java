@@ -18,9 +18,13 @@ public class Ticket {
         this.ticketOwnerName = "";
     }
 
+    public boolean isAvailable() {
+        return this.isAvailable;
+    }
 
-    public void printDetails (){
-        System.out.println(this.ID + ", " + this.isAvailable);
+    public void printDetails (int totalAvailableTickets){
+        System.out.println(this.eventName + " has " + totalAvailableTickets + " available tickets");
+        System.out.println("Ticket price: " + this.price);
     }
 
 }

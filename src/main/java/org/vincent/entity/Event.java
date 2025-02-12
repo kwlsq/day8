@@ -32,10 +32,24 @@ public class Event {
 //        this.generateTickets(ticketQuota, this.eventName, price);
 //    }
 
+
+
+
     public void printAvailableTickets (){
-        for(Ticket eachTicket: this.ticketsMap.values()){
-            eachTicket.printDetails();
+        int totalAvailableTickets = 0;
+
+        if(!ticketsMap.isEmpty()){
+            Ticket lastTicket = null;
+            for(Ticket ticket : this.ticketsMap.values()){
+                if(ticket.isAvailable()){
+                    totalAvailableTickets += 1;
+                }
+                lastTicket = ticket;
+            }
+            lastTicket.printDetails(totalAvailableTickets);
         }
+
+
     }
 
 
