@@ -47,17 +47,21 @@ public class Event {
     }
 
 
-    public UUID getAndMarkOneAvailableTicket(String userName) {
+    public UUID getAndMarkOneAvailableTicket() {
         for (Map.Entry<UUID, Ticket> entry : ticketsMap.entrySet()) {
             Ticket ticket = entry.getValue();
             if (ticket.isAvailable()) {
                 ticket.setAvailable(false);
-                ticket.setTicketOwnerName(userName);
                 return entry.getKey();
             }
         }
-        throw new BookingException("No available tickets for this event.");
+        return null;
     }
+
+    public void setSpecificTicketOwnerName(UUID ticketID, String userName){
+        ticketsMap.get(ticketID).setTicketOwnerName(userName);
+    }
+
 
     public String getEventName() {
         return this.eventName;

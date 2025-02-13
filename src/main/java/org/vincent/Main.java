@@ -1,6 +1,7 @@
 package org.vincent;
 
 import org.vincent.entity.Event;
+import org.vincent.entity.Ticket;
 
 import java.util.*;
 
@@ -39,14 +40,15 @@ public class Main {
                 }
 
                 Event chosenEvent = eventMap.get(selectedEvent);
-                System.out.print("Enter your name: ");
-                String userName = scanner.next();
-
-                UUID ticketID = chosenEvent.getAndMarkOneAvailableTicket(userName);
-                if (ticketID == null) {
-                    System.out.println("No available tickets for this event.");
+                UUID ticketID = chosenEvent.getAndMarkOneAvailableTicket();
+                if(ticketID == null){
+                    System.out.println("No available ticket. Please select other event.");
                     continue;
                 }
+
+                System.out.print("Enter your name: ");
+                String userName = scanner.next();
+                chosenEvent.setSpecificTicketOwnerName(ticketID,userName);
 
                 Booking newBooking = new Booking(ticketID, userName);
                 System.out.println("Ticket booked successfully! Ticket ID: " + ticketID);
