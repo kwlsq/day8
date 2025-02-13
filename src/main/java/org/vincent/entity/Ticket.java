@@ -3,7 +3,6 @@ package org.vincent.entity;
 import java.util.UUID;
 
 public class Ticket {
-    private final UUID ID;
     private final String eventName;
     private double price;
     private boolean isAvailable;
@@ -11,7 +10,6 @@ public class Ticket {
 
 
     public Ticket(UUID ID, String eventName, double price) {
-        this.ID = ID;
         this.eventName = eventName;
         this.price = price;
         this.isAvailable = true;
@@ -20,6 +18,14 @@ public class Ticket {
 
     public boolean isAvailable() {
         return this.isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        this.isAvailable = available;
+    }
+
+    public void setTicketOwnerName(String userName) {
+        this.ticketOwnerName = userName;
     }
 
     public void printDetails (int totalAvailableTickets, int eventID){

@@ -1,6 +1,9 @@
 package org.vincent.entity;
 
+import org.vincent.exception.BookingException;
+
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Event {
@@ -28,11 +31,6 @@ public class Event {
         return generatedTickets;
     }
 
-//    public addTickets(price, quota) {
-//        this.generateTickets(ticketQuota, this.eventName, price);
-//    }
-
-
     public void printAvailableTickets (){
         int totalAvailableTickets = 0;
 
@@ -46,10 +44,24 @@ public class Event {
             }
             lastTicket.printDetails(totalAvailableTickets, this.eventID);
         }
-
-
     }
 
+
+    public UUID getAndMarkOneAvailableTicket(String userName) {
+        for (Map.Entry<UUID, Ticket> entry : ticketsMap.entrySet()) {
+            Ticket ticket = entry.getValue();
+            if (ticket.isAvailable()) {
+                ticket.setAvailable(false);
+                ticket.setTicketOwnerName(userName);
+                return entry.getKey();
+            }
+        }
+        throw new BookingException("No available tickets for this event.");
+    }
+
+    public String getEventName() {
+        return this.eventName;
+    }
 
 
 }
