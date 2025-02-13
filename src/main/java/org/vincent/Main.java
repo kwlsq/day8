@@ -1,7 +1,6 @@
 package org.vincent;
 
 import org.vincent.entity.Event;
-import org.vincent.entity.Ticket;
 
 import java.util.*;
 
@@ -39,8 +38,11 @@ public class Main {
                     continue;
                 }
 
+                //Choose event
                 Event chosenEvent = eventMap.get(selectedEvent);
                 UUID ticketID = chosenEvent.getAndMarkOneAvailableTicket();
+
+                //Checkt ticket availability
                 if(ticketID == null){
                     System.out.println("No available ticket. Please select other event.");
                     continue;
